@@ -1,0 +1,63 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BookType {
+  id: ID
+  cover: String
+  title: String
+  author: String
+  description: String
+  isbn: String
+  link: String
+  publishedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type BookSubscription {
+  data: BookType!
+  type: String!
+}
+
+type Query {
+  books(search: String, page: Float, limit: Float, sort: String, by: String): [BookType!]!
+  book(id: Float!): BookType!
+}
+
+type Mutation {
+  createBook(book: BookInput!): BookType!
+  updateBook(id: Float!, book: BookUpdateInput!): BookType!
+  deleteBook(id: Float!): BookType!
+}
+
+input BookInput {
+  cover: String!
+  title: String!
+  author: String!
+  description: String!
+  isbn: String!
+  link: String!
+  publishedAt: DateTime!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input BookUpdateInput {
+  cover: String
+  title: String
+  author: String
+  description: String
+  isbn: String
+  link: String
+  publishedAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Subscription {
+  bookSubs: BookSubscription!
+}
